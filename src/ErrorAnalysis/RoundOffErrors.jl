@@ -1,10 +1,18 @@
 function absolute_error(value::Float64, approximated_value::Float64)::Float64
-    abs(value - approximated_value)
+    # Implement the absolute error function. Hint: use abs funciton
+    return abs(approximated_value - value)
 end
 
 function relative_error(value::Float64, approximated_value::Float64)::Float64
-    @assert ~isapprox(value, 0, atol = 1e-8) "value must be non-zero"
-    return abs((value-approximated_value)/value)
+     # Implement the relative error function.
+     @assert ~isapprox(value, 0, atol = 1e-8) "Value must be non-zero"
+     return abs((value - approximated_value) / value)
+end
+
+function relative_error(value::Float64, approximated_value::Irrational)::Float64
+    # Implement the relative error function.
+    @assert ~isapprox(value, 0, atol = 1e-8) "Value must be non-zero"
+    return abs((value - approximated_value) / value)
 end
 
 function approximated_value_interval_given_relative_error(
@@ -16,9 +24,9 @@ function approximated_value_interval_given_relative_error(
         error("Please, provide a non zero value")
     end
 
-    min_value = x-relative_error*abs(x)
-    max_value = x+relative_error*abs(x)
+    y_1 = value - relative_error*abs(value) 
+    y_2 = value + relative_error*abs(value)
 
-    return (min_value, max_value)
+    return (y_1,y_2)
 
 end
