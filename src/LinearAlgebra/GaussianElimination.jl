@@ -64,8 +64,17 @@ function solve_system(matriz_A::Matrix{Float64}, vector_b::Vector{Float64})
     x=Vector{Float64}(undef, n)
     x[n] = A[n,n+1]/A[n,n]
 
-    """
-    """
+    #Step 9
+    for i = n-1:1:-1
+        S=0
+        for j = i+1:n
+            S=S+(A[i,j]*x[j])
+        end
+        x[i] = (A[i,n+1]-S)/A[i,i]
+    end
+
+    #Step 10
+    return(x)
 end
 
 function dimension_failure(A::Matrix{Float64}, number_of_variables::Int64)
