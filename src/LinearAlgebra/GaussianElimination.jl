@@ -6,11 +6,12 @@ OUTPUT: Solução x_1, x_2, ..., x_n =: x do sistema Ax=b
 
 function solve_system(matriz_A::Matrix{Float64}, vector_b::Vector{Float64})
 
-    n = lenght(b)
+    n_digits=8
+    n = length(vector_b)
 
-    dimension_failure(A,n) && return
+    dimension_failure(matriz_A,n) && return
 
-    A = [matriz_A vector_b]
+    A = [copy(matriz_A) copy(vector_b)]
 
     for i=1:n-1 #Step 1
         #Step 2 Tome p omenor inteiro em [i,n] tal que a_pi != 0
@@ -19,7 +20,7 @@ function solve_system(matriz_A::Matrix{Float64}, vector_b::Vector{Float64})
         msg_erro = false
 
         for k=i:n
-            if A[k,i] != 0
+            if round(A[k,i], digits = n_digits) != 0
                 p = k
                 break
             end
@@ -50,12 +51,12 @@ function solve_system(matriz_A::Matrix{Float64}, vector_b::Vector{Float64})
             
             #Step 6: E_j - m E_i -> E_j
 
-            A[j,:] = A[j,:] - m*A[i,i]
+            A[j,:] = A[j,:] - m*A[i,:]
         end
     end
 
     #Step 7
-    if A[n,n] == 0
+    if round(A[n,n], digits = n_digits) == 0
         println("Sistema não admite única solução")
         return
     end
@@ -64,11 +65,11 @@ function solve_system(matriz_A::Matrix{Float64}, vector_b::Vector{Float64})
     x=Vector{Float64}(undef, n)
     x[n] = A[n,n+1]/A[n,n]
 
-    #Step 9
-    for i = n-1:1:-1
+    #Step 9 substituição reversa
+    for i = n-1:-1:1
         S=0
         for j = i+1:n
-            S=S+(A[i,j]*x[j])
+            S += (A[i,j]*x[j])
         end
         x[i] = (A[i,n+1]-S)/A[i,i]
     end

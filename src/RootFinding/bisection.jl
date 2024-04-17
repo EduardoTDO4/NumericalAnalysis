@@ -1,4 +1,4 @@
-function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Int4)
+function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Int64)
 
     #Step 1
     a_i=a; b_i=b

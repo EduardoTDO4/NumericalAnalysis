@@ -26,6 +26,6 @@ function secant(f::Function, p_0::Float64, p_1::Float64, τ::Float64, N::Int64)
 
         #Step 7
         q_i = p_i; p_i = p; fp_i = f(p_i); fq_i = f(q_i)
-        
+    end
     
 end

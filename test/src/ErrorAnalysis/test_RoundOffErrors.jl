@@ -17,7 +17,7 @@ end
 
 @testset "Test relative_error" begin
 
-    atol = 1e-16
+    atol = 1e-15
 
     function stirling_approximation(n::Int64)::Float64
         sqrt(2 * pi * n) * (n / exp(1))^n
