@@ -6,7 +6,8 @@ DIGITS = 10
 include("../src/Includes.jl")
 #include("src/ErrorAnalysis/test_RoundOffErrors.jl")
 #include("src/ErrorAnalysis/test_RoundArithmetics.jl")
-include("src/LinearAlgebra/test_GaussianElimination.jl")
+#include("src/LinearAlgebra/test_GaussianElimination.jl")
+include("src/RootFinding/test_RootFinding.jl")
 
 """
 Use this to test all!

@@ -1,4 +1,4 @@
-function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Int64)
+function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Integer)
 
     #Step 1
     a_i=a; b_i=b
@@ -10,7 +10,7 @@ function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Int64)
         p = a_i + (b_i - a_i)/2; f_p = f(p)
 
         #Step 4
-        if f_p == 0 | (b_i - a_i)/2 < τ
+        if (f_p == 0) || ((b_i - a_i)/2 < τ)
             return(p);
         end
 
