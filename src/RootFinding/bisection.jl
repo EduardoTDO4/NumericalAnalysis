@@ -1,21 +1,23 @@
-function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Integer)
+function bissection(f::Function, a::Float64, b::Float64, τ::Float64, N::Integer)
 
     #Step 1
-    a_i=a; b_i=b
+    a_i = a
+    b_i = b
 
     #Step 2
-    for i=1:N
+    for i = 1:N
 
         #Step 3
-        p = a_i + (b_i - a_i)/2; f_p = f(p)
+        p = a_i + (b_i - a_i) / 2
+        f_p = f(p)
 
         #Step 4
-        if (f_p == 0) || ((b_i - a_i)/2 < τ)
-            return(p);
+        if (f_p == 0) || ((b_i - a_i) / 2 < τ)
+            return (p)
         end
 
         #Step 5
-        if sign(f(a_i))*sign(f_p)>0
+        if sign(f(a_i)) * sign(f_p) > 0
             a_i = p
         else
             b_i = p
@@ -24,6 +26,6 @@ function bissection(f::Function,a::Float64,b::Float64,τ::Float64, N::Integer)
     end
 
     #Step 6 
-    return("Método falhou")
-    
+    return ("Método falhou")
+
 end
