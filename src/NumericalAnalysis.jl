@@ -14,5 +14,8 @@ export round_sum,
     newton,
     secant,
     solve_system
-
+    aitken
+    steffensen
+    horner
+    newton_horner
 end

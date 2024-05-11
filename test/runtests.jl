@@ -7,8 +7,8 @@ include("../src/Includes.jl")
 #include("src/ErrorAnalysis/test_RoundOffErrors.jl")
 #include("src/ErrorAnalysis/test_RoundArithmetics.jl")
 #include("src/LinearAlgebra/test_GaussianElimination.jl")
-#include("src/RootFinding/test_RootFinding.jl")
-include("src/Integrals/test_CompositeSimpson.jl")
+include("src/RootFinding/test_RootFinding.jl")
+#include("src/Integrals/test_CompositeSimpson.jl")
 
 """
 Use this to test all!
