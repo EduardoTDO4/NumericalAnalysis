@@ -18,4 +18,7 @@ export round_sum,
     steffensen
     horner
     newton_horner
+    dimension_failure
+    pivoting
+    inverse
 end
