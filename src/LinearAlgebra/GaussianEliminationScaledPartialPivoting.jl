@@ -24,7 +24,6 @@ function pivoting(matriz_A::Matrix{Float64},vetor_b::Vector{Float64})
 
         M = maximum(abs,M_i)
         P = zeros(Int64,n-i+1)
-        
         q=i
         
         for q = i:n
@@ -37,10 +36,10 @@ function pivoting(matriz_A::Matrix{Float64},vetor_b::Vector{Float64})
         
         Q = minimum(P)
 
-        if Q != i
-            w = copy(A[Q,:])
+        if Q!=i
+            N = copy(A[Q,:])
             A[Q,:] = A[i,:]
-            A[i,:] = w
+            A[i,:] = N
         end
         
         for j = i+1:n
@@ -56,7 +55,7 @@ function pivoting(matriz_A::Matrix{Float64},vetor_b::Vector{Float64})
     x = zeros(Float64,n)
     x[n] += A[n,n+1]/A[n,n]
 
-    for i = n-1:1:-1
+    for i = n-1:-1:1
         S = 0
         for j = i+1:n
             S+=A[i,j]*x[j]
