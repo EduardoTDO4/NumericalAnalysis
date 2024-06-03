@@ -26,4 +26,6 @@
 
     #testar com polinomios, exponencial, logatimo
 
+    #lalalalala
+
 end
